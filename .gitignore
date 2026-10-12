@@ -1,0 +1,8 @@
+backend/config/credenciales.php
+credenciales.php
+respaldos/
+*.log
+.candado
+*.candado
+vendor/
+.vscode/

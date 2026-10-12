@@ -1,0 +1,11 @@
+# El sistema se actualiza reemplazando archivos, asi que el navegador no debe
+# quedarse con copias viejas de la interfaz. Sin esto, cambiar app.js o
+# style.css no se ve hasta que el usuario recarga a la fuerza.
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html|js|css)$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+  </FilesMatch>
+</IfModule>
+FileETag None

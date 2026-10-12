@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sistema Escuela</title>
+<link rel="icon" href="img/nota-negra.svg">
+<script>
+  // El modo claro u oscuro elegido se aplica antes de pintar, para que no parpadee.
+  try { var t = localStorage.getItem('escuela-tema'); if (t === 'claro' || t === 'oscuro') document.documentElement.dataset.tema = t; } catch (e) {}
+</script>
+<link rel="stylesheet" href="css/style.css?v=5.13">
+</head>
+<body>
+
+<!-- ═══════════════════ ACCESO ═══════════════════ -->
+<section id="acceso" class="oculto">
+  <div class="caja">
+    <div class="marca" role="img" aria-label="Sistema Escuela"></div>
+    <h1>Entra a tu escuela</h1>
+    <p class="entrada">Alumnos, clases, pagos y nómina en un solo lugar.</p>
+
+    <form id="form-acceso" autocomplete="on">
+      <input id="usuario" name="usuario" class="campo campo-oscuro" placeholder="Usuario"
+             autocomplete="username" required>
+      <input id="clave" name="password" type="password" class="campo campo-oscuro"
+             placeholder="Contraseña" autocomplete="current-password" required>
+      <p id="error-acceso" class="oculto" style="color:#FF6B5E;font-size:13.5px;margin:2px 0 0"></p>
+      <button type="submit" class="pildora pildora-azul" style="margin-top:8px">Entrar</button>
+    </form>
+
+    <p class="pie">¿No puedes entrar? Pídele a un administrador que restablezca tu contraseña.</p>
+    <p class="pie" id="version-acceso" style="margin-top:10px;opacity:.55"></p>
+  </div>
+</section>
+
+<!-- ═══════════════════ SISTEMA ═══════════════════ -->
+<div id="app" class="oculto">
+  <header class="barra">
+    <div class="interior">
+      <div class="nota" aria-hidden="true"></div>
+      <span class="titulo">Sistema Escuela</span>
+
+      <nav id="menu" aria-label="Módulos">
+        <a href="#inicio" data-vista="inicio">Inicio</a>
+        <a href="#alumnos" data-vista="alumnos">Alumnos</a>
+        <a href="#maestros" data-vista="maestros">Maestros</a>
+        <a href="#pendientes" data-vista="pendientes">Pendientes</a>
+        <a href="#espera" data-vista="espera" title="Lista de espera">Espera</a>
+        <a href="#horarios" data-vista="horarios">Horarios</a>
+        <a href="#pagos" data-vista="pagos">Pagos</a>
+        <a href="#nomina" data-vista="nomina">Nómina</a>
+        <a href="#reportes" data-vista="reportes">Reportes</a>
+        <a href="#bitacora" data-vista="bitacora">Bitácora</a>
+        <a href="#importar" data-vista="importar">Importar</a>
+        <a href="#ajustes" data-vista="ajustes">Ajustes</a>
+      </nav>
+
+      <button id="menu-movil" aria-label="Abrir módulos" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+          <path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <button id="btn-tema" class="boton-tema" type="button" aria-label="Cambiar entre modo claro y oscuro"></button>
+      <button id="btn-salir" class="salir">Salir</button>
+    </div>
+  </header>
+
+  <main id="vista" class="contenido"></main>
+</div>
+
+<div id="avisos"></div>
+<div id="capa-modal"></div>
+
+<script src="js/app.js?v=5.14"></script>
+</body>
+</html>
